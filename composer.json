@@ -2,7 +2,7 @@
     "name": "crcms/filter",
     "description": "crcms input filter",
     "keywords": ["filter", "crcms","laravel","php"],
-    "homepage": "https://github.com/hiword/filter",
+    "homepage": "https://github.com/crcms/filter",
     "type": "library",
     "license": "MIT",
     "authors": [
