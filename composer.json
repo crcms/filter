@@ -1,6 +1,6 @@
 {
-    "name": "simon/filter",
-    "description": "filter xss or shell or other .",
+    "name": "crcms/filter",
+    "description": "crcms input filter",
     "keywords": ["filter", "crcms","laravel","php"],
     "homepage": "https://github.com/hiword/filter",
 	"license": "MIT",
