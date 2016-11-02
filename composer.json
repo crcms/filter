@@ -18,6 +18,5 @@
         "psr-4": {
             "CrCms\\Filter\\": "src/"
         }
-    },
-    "version": "0.0.1"
+    }
 }
