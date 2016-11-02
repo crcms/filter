@@ -18,5 +18,10 @@
         "psr-4": {
             "CrCms\\Filter\\": "src/"
         }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.0.x-dev"
+        }
     }
 }
