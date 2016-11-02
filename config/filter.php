@@ -1,4 +1,4 @@
 <?php
 return [
-    'drives'=>[\Simon\Filter\Drives\XssFilter::class]
+    'drives'=>[CrCms\Filter\Drives\XssFilter::class]
 ];
