@@ -1,0 +1,23 @@
+{
+    "name": "simon/filter",
+    "description": "filter xss or shell or other .",
+    "keywords": ["filter", "crcms","laravel","php"],
+    "homepage": "https://github.com/hiword/filter",
+	"license": "MIT",
+    "authors": [
+        {
+            "name": "simon",
+            "email": "28737164@qq.com",
+            "homepage": "http://crcms.cn"
+        }
+    ],
+    "require": {
+        "php": ">=7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "CrCms\\Filter\\": "src/"
+        }
+    },
+    "version": "0.0.1"
+}
