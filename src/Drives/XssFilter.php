@@ -1,11 +1,4 @@
 <?php
-/**
- * Xss过滤
- * User: simon
- * Date: 2016/9/21
- * Time: 13:59
- */
-
 namespace CrCms\Filter\Drives;
 
 use CrCms\Filter\FilterInterface;

@@ -1,23 +1,12 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: simon
- * Date: 2016/9/21
- * Time: 13:53
- */
-
 namespace CrCms\Filter;
-
-
 
 class Input
 {
     /**
-     * 数据组
      * @var array
      */
     protected $data = [];
-
 
     /**
      * Input constructor.
@@ -98,14 +87,10 @@ class Input
      */
     protected function filterKernel(array $data,FilterInterface $filter) : array
     {
-        foreach ($data as &$value)
-        {
-            if (is_array($value))
-            {
+        foreach ($data as &$value) {
+            if (is_array($value)) {
                 $value = $this->filterKernel($value,$filter);
-            }
-            else
-            {
+            } else {
                 $value = $filter->filter(trim($value));
             }
         }
