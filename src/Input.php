@@ -12,7 +12,7 @@ class Input
     /**
      * @var bool
      */
-    protected $emptyStringConvertNull = true;
+    protected $emptyStringConvertNull = false;
 
     /**
      * Input constructor.
@@ -51,7 +51,7 @@ class Input
      * @param null $default
      * @return mixed|null
      */
-    public function input(string $key, $default = null, bool $nullConvertDefault = true)
+    public function input(string $key, $default = null, bool $nullConvertDefault = false)
     {
         $result = array_get($this->data, $key, $default);
 
@@ -70,7 +70,7 @@ class Input
      * @param bool $nullConvertDefault
      * @return mixed|null
      */
-    public function get(string $key, $default = null, bool $nullConvertDefault = true)
+    public function get(string $key, $default = null, bool $nullConvertDefault = false)
     {
         return $this->input($key, $default, $nullConvertDefault);
     }
