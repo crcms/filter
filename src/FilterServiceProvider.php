@@ -1,7 +1,8 @@
 <?php
+
 namespace CrCms\Filter;
+
 use Illuminate\Support\ServiceProvider;
-use CrCms\Filter\Drives\XssFilter;
 
 class FilterServiceProvider extends ServiceProvider
 {
@@ -13,8 +14,7 @@ class FilterServiceProvider extends ServiceProvider
     /**
      * @var string
      */
-    protected $configPath = __DIR__.'/../config/filter.php';
-
+    protected $configPath = __DIR__ . '/../config/filter.php';
 
     /**
      *
@@ -25,7 +25,6 @@ class FilterServiceProvider extends ServiceProvider
             $this->configPath => config_path('filter.php'),
         ]);
     }
-
 
     /**
      *
@@ -39,17 +38,16 @@ class FilterServiceProvider extends ServiceProvider
         $data = $this->app['request']->all();
 
         //
-        $this->app->singleton('input',function () use ($drives,$data){
+        $this->app->singleton('input', function () use ($drives, $data) {
             $input = new Input($data);
 
-            array_map(function ($value) use ($input){
+            array_map(function ($value) use ($input) {
                 $input->filter(new $value);
-            },$drives);
+            }, $drives);
 
             return $input;
         });
     }
-
 
     /**
      * @return array
