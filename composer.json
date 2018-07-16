@@ -1,14 +1,14 @@
 {
     "name": "crcms/filter",
     "description": "crcms input filter",
-    "keywords": ["filter", "crcms","laravel","php"],
+    "keywords": ["xss", "xss filter", "shell filter", "crcms", "laravel", "php"],
     "homepage": "https://github.com/crcms/filter",
     "type": "library",
     "license": "MIT",
     "authors": [
         {
             "name": "simon",
-            "email": "28737164@qq.com",
+            "email": "crcms@crcms.cn",
             "homepage": "http://crcms.cn"
         }
     ],
