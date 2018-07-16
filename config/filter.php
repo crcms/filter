@@ -1,4 +1,27 @@
 <?php
 return [
-    'drives'=>[CrCms\Filter\Drives\XssFilter::class]
+
+    /*
+    |--------------------------------------------------------------------------
+    | Default filter driver
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    'default' => 'xss',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Supported filter drivers
+    |--------------------------------------------------------------------------
+    |
+    | XSS:  XssFilter
+    | Shell: ShellFilter
+    |
+    */
+
+    'drivers'=>[
+        'xss' => CrCms\Filter\Drives\XssFilter::class,
+        'shell' => CrCms\Filter\Drives\ShellFilter::class,
+    ]
 ];

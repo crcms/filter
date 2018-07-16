@@ -34,16 +34,12 @@ class FilterServiceProvider extends ServiceProvider
         //合并filter config
         $this->mergeConfigFrom($this->configPath, 'filter');
 
-        $drives = $this->app['config']->get('filter.drives');
-        $data = $this->app['request']->all();
+        $this->app->alias('input', FilterInterface::class);
 
         //
-        $this->app->singleton('input', function () use ($drives, $data) {
-            $input = new Input($data);
-
-            array_map(function ($value) use ($input) {
-                $input->filter(new $value);
-            }, $drives);
+        $this->app->singleton('input', function ($app) {
+            $input = new Input($app['request']->all());
+            $input->filter($app['config']->get('filter.default'));
 
             return $input;
         });
@@ -52,7 +48,7 @@ class FilterServiceProvider extends ServiceProvider
     /**
      * @return array
      */
-    public function provides()
+    public function provides(): array
     {
         return ['input'];
     }
