@@ -1,6 +1,6 @@
 <?php
 
-namespace CrCms\Filter\Drives;
+namespace CrCms\Filter\Drivers;
 
 use CrCms\Filter\FilterInterface;
 

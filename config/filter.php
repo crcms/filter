@@ -22,7 +22,7 @@ return [
     */
 
     'drivers'=>[
-        'xss' => CrCms\Filter\Drives\XssFilter::class,
-        'shell' => CrCms\Filter\Drives\ShellFilter::class,
+        'xss' => CrCms\Filter\Drivers\XssFilter::class,
+        'shell' => CrCms\Filter\Drivers\ShellFilter::class,
     ]
 ];
