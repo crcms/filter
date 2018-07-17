@@ -38,10 +38,7 @@ class FilterServiceProvider extends ServiceProvider
 
         //
         $this->app->singleton('input', function ($app) {
-            $input = new Input($app['request']->all());
-            $input->filter($app['config']->get('filter.default'));
-
-            return $input;
+            return (new Input)->addHandler($app['config']->get('filter.default'))->filter($app['request']->all());
         });
     }
 

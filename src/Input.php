@@ -4,6 +4,10 @@ namespace CrCms\Filter;
 
 use Illuminate\Support\Arr;
 
+/**
+ * Class Input
+ * @package CrCms\Filter
+ */
 class Input
 {
     /**
@@ -12,12 +16,21 @@ class Input
     protected $data = [];
 
     /**
-     * Input constructor.
-     * @param array $data
+     * @var array
      */
-    public function __construct(array $data)
+    protected $original = [];
+
+    /**
+     * @var array
+     */
+    protected $handlers = [];
+
+    /**
+     * @return array
+     */
+    public function getOriginal(): array
     {
-        $this->data = $data;
+        return $this->original;
     }
 
     /**
@@ -77,14 +90,40 @@ class Input
     }
 
     /**
-     * 过滤组件
-     *
-     * @param FilterInterface $filter
+     * @param array $data
      * @return Input
      */
-    public function filter(FilterInterface $filter): Input
+    public function filter(array $data): Input
     {
-        $this->data = $this->filterKernel($this->data, $filter);
+        $this->data = $this->original = $data;
+
+        array_map(function($handler){
+            $this->data = $this->filterKernel($this->data, $handler);
+        },$this->handlers);
+
+        return $this;
+    }
+
+    /**
+     * @param FilterInterface $handler
+     * @return $this
+     */
+    public function addHandler(FilterInterface $handler)
+    {
+        if (!in_array($handler, $this->handlers, true)) {
+            $this->handlers[] = $handler;
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param array $handlers
+     * @return $this
+     */
+    public function setHandlers(array $handlers)
+    {
+        $this->handlers = $handlers;
 
         return $this;
     }
@@ -93,16 +132,16 @@ class Input
      * 过滤核心处理
      *
      * @param array $data
-     * @param FilterInterface $filter
+     * @param FilterInterface $handler
      * @return array
      */
-    protected function filterKernel(array $data, FilterInterface $filter): array
+    protected function filterKernel(array $data, FilterInterface $handler): array
     {
         foreach ($data as &$value) {
             if (is_array($value)) {
-                $value = $this->filterKernel($value, $filter);
+                $value = $this->filterKernel($value, $handler);
             } else {
-                $value = $filter->filter(trim($value));
+                $value = $handler->filter(trim($value));
             }
         }
 
